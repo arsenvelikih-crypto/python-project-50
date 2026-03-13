@@ -1,4 +1,12 @@
 import argparse
+import json
+
+
+def parse_json(file_path):
+    return json.load(open(file_path))
+
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog="gendiff",
