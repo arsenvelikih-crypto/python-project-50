@@ -1,4 +1,4 @@
-from scripts.gendiff import parser_function, parse_json, generate_diff, main
+from gendiff.scripts.gendiff import parser_function, parse_json, generate_diff, main
 
 
 
