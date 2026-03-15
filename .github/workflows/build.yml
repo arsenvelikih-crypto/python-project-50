@@ -20,6 +20,17 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python }}
+      - name: Install dependencies
+        run: |
+          pip install uv
+          make install
+      - name: Run linter and pytest
+        run: |
+          make lint
+          make test
+      - name: Run test coverage
+        run: |
+          make test-coverage
       - name: Install tox and any other packages
         run: pip install tox
       - name: Run tox
@@ -28,3 +39,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          args: >
+            -Dsonar.projectKey=arsenvelikih-crypto_python-project-50
+            -Dsonar.organization=arsenvelikih-crypto
+            -Dsonar.python.coverage.reportPaths=coverage.xml
