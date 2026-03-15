@@ -16,6 +16,8 @@ dev = [
 [dependency-groups]
 dev = [
     "pytest>=9.0.2",
+    "pytest-cov",
+    "ruff"
 ]
 
 [build-system]
