@@ -1,5 +1,6 @@
-from gendiff.scripts import gendiff
 from pathlib import Path
+
+from gendiff.scripts import gendiff
 
 
 def get_test_data_path(filename):
