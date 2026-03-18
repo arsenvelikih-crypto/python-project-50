@@ -1,15 +1,13 @@
 from pathlib import Path
 
-from gendiff.scripts import gendiff
-
-from gendiff.scripts import parsing_files
-
+from gendiff.scripts import gendiff, parsing_files
 
 
 # получение пути к тестовым данным
 def get_test_data_path(filename):
 
     return Path(__file__).parent / "test_data" / filename
+
 
 # Чтение тестовых данных
 def read_file(filename):
@@ -25,6 +23,7 @@ def test_gendiff_json():
     expected = read_file("gendiff_expected.txt")
     actual = gendiff.generate_diff(file1, file2)
     assert actual == expected
+
 
 # тестирование функции сравнения yaml файлов
 def test_gendiff_yaml():

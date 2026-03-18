@@ -1,4 +1,5 @@
 import argparse
+
 from gendiff.scripts import parsing_files
 
 
