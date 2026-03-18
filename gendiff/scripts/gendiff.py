@@ -1,8 +1,8 @@
 import argparse
-import json
+from gendiff.scripts import parsing_files
 
 
-# парсер
+# парсер командной строки
 def parser_function():
 
     parser = argparse.ArgumentParser(
@@ -19,12 +19,6 @@ def parser_function():
         type=str
     )
     return parser.parse_args()
-
-
-# чтение и парсинг json файлов
-def parse_json(file_path):
-
-    return json.load(open(file_path))
 
 
 # Сравнение двух файлов
@@ -50,8 +44,8 @@ def generate_diff(file1, file2):
 def main():
 
     args = parser_function()
-    data1 = parse_json(args.first_file)
-    data2 = parse_json(args.second_file)
+    data1 = parsing_files.parse(args.first_file)
+    data2 = parsing_files.parse(args.second_file)
     print(generate_diff(data1, data2))
         
 
