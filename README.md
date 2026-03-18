@@ -21,3 +21,4 @@
 
 # Demonstration
 [![asciicast](https://asciinema.org/a/BibrgsrD6FNOqaL4.svg)](https://asciinema.org/a/BibrgsrD6FNOqaL4)
+[![asciicast](https://asciinema.org/a/DsDmAcxMYpo2ktNq.svg)](https://asciinema.org/a/DsDmAcxMYpo2ktNq)
