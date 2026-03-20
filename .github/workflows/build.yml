@@ -38,11 +38,13 @@ jobs:
         run: tox -e py
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: .
           args: >
             -Dsonar.projectKey=arsenvelikih-crypto_python-project-50
             -Dsonar.organization=arsenvelikih-crypto
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.coverage.exclusions=tests/**
             -Dsonar.exclusions=tests/**
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
