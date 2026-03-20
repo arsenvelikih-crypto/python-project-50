@@ -1,3 +1,5 @@
+from gendiff.scripts.build_diff import build
+from gendiff.scripts.formatters import formaters
 from gendiff.scripts.gendiff import (
     generate_diff,
     main,
@@ -10,4 +12,6 @@ __all__ = (
     'generate_diff',
     'main',
     'parse',
+    'build',
+    'formaters',
 )

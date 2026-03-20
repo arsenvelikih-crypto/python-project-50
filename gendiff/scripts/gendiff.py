@@ -1,6 +1,8 @@
 import argparse
 
 from gendiff.scripts import parsing_files
+from gendiff.scripts.build_diff import build
+from gendiff.scripts.formatters import formaters
 
 
 # парсер командной строки
@@ -23,23 +25,14 @@ def parser_function():
 
 
 # Сравнение двух файлов
-def generate_diff(file1, file2):
+def generate_diff(file1, file2, format_name='stylish'):
+    
+    diff = build(file1, file2)
+    formatter = formaters.get(format_name)
+    if not formatter:
+        raise ValueError(f'Unsupported format: {format_name}')
+    return formatter(diff)
 
-    diff = []
-    keys = sorted(file1.keys() | file2.keys())
-
-    for key in keys:
-        if key not in file2:
-            diff.append(f"  - {key}: {file1[key]}")
-        elif key not in file1:
-            diff.append(f"  + {key}: {file2[key]}")
-        elif file1[key] != file2[key]:
-            diff.append(f"  - {key}: {file1[key]}")
-            diff.append(f"  + {key}: {file2[key]}")      
-        else:
-            diff.append(f"  {key}: {file1[key]}")   
-    return "{\n" + "\n".join(diff) + "\n}"
-        
 
 # основная функция
 def main():
