@@ -1,3 +1,4 @@
+# форматирование вывода в виде дерева
 def format_value(value, depth, replacer=' ', spaces_count=2):
     indent = replacer * (depth * spaces_count)
     bracket_indent = replacer * ((depth - 1) * spaces_count)
@@ -14,17 +15,15 @@ def format_value(value, depth, replacer=' ', spaces_count=2):
         return "{\n" + "\n".join(lines) + "\n" + bracket_indent + "}"
     if value is None:
         return 'null'   
-    if value is True:
-        return 'true'
-    if value is False:
-        return 'false'
-    return value
+    if isinstance(value, bool):
+        return str(value).lower()
+    return str(value)
 
 
 # форматирование вывода в виде дерева
 def stringify_diff(diff, replacer=' ', spaces_count=4, depth=1):
     indent = replacer * (spaces_count * depth)
-    sighn_indent = replacer * (spaces_count * depth - 2)
+    sign_indent = replacer * (spaces_count * depth - 2)
     lines = []
     for key, value in diff.items():
         status = value['status']
@@ -43,7 +42,7 @@ def stringify_diff(diff, replacer=' ', spaces_count=4, depth=1):
                 depth + 1,
                 replacer,
                 spaces_count)
-            lines.append(f"{sighn_indent}+ {key}: {val}")
+            lines.append(f"{sign_indent}+ {key}: {val}")
         
         elif status == 'removed':
             val = format_value(
@@ -51,7 +50,7 @@ def stringify_diff(diff, replacer=' ', spaces_count=4, depth=1):
                 depth + 1,
                 replacer,
                 spaces_count)
-            lines.append(f"{sighn_indent}- {key}: {val}")
+            lines.append(f"{sign_indent}- {key}: {val}")
 
         elif status == 'unchanged':
             val = format_value(
@@ -73,14 +72,9 @@ def stringify_diff(diff, replacer=' ', spaces_count=4, depth=1):
                 replacer,
                 spaces_count)
 
-            lines.append(f"{sighn_indent}- {key}: {old_val}")
-            lines.append(f"{sighn_indent}+ {key}: {new_val}")
+            lines.append(f"{sign_indent}- {key}: {old_val}")
+            lines.append(f"{sign_indent}+ {key}: {new_val}")
 
     result = '\n'.join(lines)
     bracket_indent = replacer * ((depth - 1) * spaces_count)
     return "{\n" + result + "\n" + bracket_indent + "}"
-
-
-formaters = {
-    'stylish': stringify_diff,
-}

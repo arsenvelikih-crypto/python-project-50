@@ -2,7 +2,14 @@ import argparse
 
 from gendiff.scripts import parsing_files
 from gendiff.scripts.build_diff import build
-from gendiff.scripts.formatters import formaters
+from gendiff.scripts.format.plain import plain_format
+from gendiff.scripts.format.stylish import stringify_diff
+
+# словарь с форматами вывода
+formaters = {
+    'stylish': stringify_diff,
+    'plain': plain_format,
+}
 
 
 # парсер командной строки
@@ -40,7 +47,7 @@ def main():
     args = parser_function()
     data1 = parsing_files.parse(args.first_file)
     data2 = parsing_files.parse(args.second_file)
-    print(generate_diff(data1, data2))
+    print(generate_diff(data1, data2, args.format))
         
 
 if __name__ == '__main__':
