@@ -35,8 +35,17 @@ def parser_function():
 
 # Сравнение двух файлов
 def generate_diff(file1, file2, format_name='stylish'):
-    
-    diff = build(file1, file2)
+    if isinstance(file1, str):
+        data1 = parsing_files.parse(file1)
+    else:
+        data1 = file1
+
+    if isinstance(file2, str):
+        data2 = parsing_files.parse(file2)
+    else:
+        data2 = file2
+
+    diff = build(data1, data2)
     formatter = formaters.get(format_name)
     if not formatter:
         raise ValueError(f'Unsupported format: {format_name}')
