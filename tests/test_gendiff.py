@@ -18,10 +18,10 @@ def read_file(filename):
 # тестирование функции сравнения json файлов в формате stylish
 def test_gendiff_json_stylish():
 
-    file1 = parsing_files.parse(get_test_data_path("first.json"))
-    file2 = parsing_files.parse(get_test_data_path("second.json"))
-    file3 = parsing_files.parse(get_test_data_path("file1.json"))
-    file4 = parsing_files.parse(get_test_data_path("file2.json"))
+    file1 = parsing_files.parse(get_test_data_path("small1.json"))
+    file2 = parsing_files.parse(get_test_data_path("small2.json"))
+    file3 = parsing_files.parse(get_test_data_path("big1.json"))
+    file4 = parsing_files.parse(get_test_data_path("big2.json"))
     expected = read_file("expected_stylish.txt")
     expected2 = read_file("expected_big_stylish.txt")
     actual = gendiff.generate_diff(file1, file2)
@@ -34,10 +34,10 @@ def test_gendiff_json_stylish():
 # тестирование функции сравнения yaml файлов в формате stylish
 def test_gendiff_yaml_stylish():
 
-    file1 = parsing_files.parse(get_test_data_path("first.yaml"))
-    file2 = parsing_files.parse(get_test_data_path("second.yaml"))
-    file3 = parsing_files.parse(get_test_data_path("file1.yaml"))
-    file4 = parsing_files.parse(get_test_data_path("file2.yaml"))
+    file1 = parsing_files.parse(get_test_data_path("small1.yaml"))
+    file2 = parsing_files.parse(get_test_data_path("small2.yaml"))
+    file3 = parsing_files.parse(get_test_data_path("big1.yaml"))
+    file4 = parsing_files.parse(get_test_data_path("big2.yaml"))
     expected = read_file("expected_stylish.txt")
     expected2 = read_file("expected_big_stylish.txt")
     actual = gendiff.generate_diff(file1, file2)
@@ -50,8 +50,8 @@ def test_gendiff_yaml_stylish():
 # тестирование функции сравнения json файлов в формате plain
 def test_gendiff_json_plain():
 
-    file3 = parsing_files.parse(get_test_data_path("file1.yaml"))
-    file4 = parsing_files.parse(get_test_data_path("file2.yaml"))
+    file3 = parsing_files.parse(get_test_data_path("big1.json"))
+    file4 = parsing_files.parse(get_test_data_path("big2.json"))
     expected = read_file("expected_plain.txt")
     actual = gendiff.generate_diff(file3, file4, 'plain')
 
@@ -61,11 +61,32 @@ def test_gendiff_json_plain():
 # тестирование функции сравнения yaml файлов в формате plain
 def test_gendiff_yaml_plain():
 
-    file3 = parsing_files.parse(get_test_data_path("file1.yaml"))
-    file4 = parsing_files.parse(get_test_data_path("file2.yaml"))
+    file3 = parsing_files.parse(get_test_data_path("big1.yaml"))
+    file4 = parsing_files.parse(get_test_data_path("big2.yaml"))
     expected = read_file("expected_plain.txt")
     actual = gendiff.generate_diff(file3, file4, 'plain')
 
     assert actual == expected
 
 
+# тестирование функции сравнения json файлов в формате json
+def test_gendiff_json_json():
+    file1 = parsing_files.parse(get_test_data_path("big1.json"))
+    file2 = parsing_files.parse(get_test_data_path("big2.json"))
+    actual = gendiff.generate_diff(file1, file2, 'json')
+    
+    expected_diff = read_file("expected_json.txt")
+
+    assert actual == expected_diff
+
+
+# тестирование функции сравнения yaml файлов в формате json
+def test_gendiff_yaml_json():
+    file1 = parsing_files.parse(get_test_data_path("big1.yaml"))
+    file2 = parsing_files.parse(get_test_data_path("big2.yaml"))
+    actual = gendiff.generate_diff(file1, file2, 'json')
+    
+    expected_diff = read_file("expected_json.txt")
+
+    assert actual == expected_diff
+    

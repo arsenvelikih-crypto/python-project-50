@@ -21,14 +21,14 @@ def format_value(value, depth, replacer=' ', spaces_count=2):
 
 
 # форматирование вывода в виде дерева
-def stringify_diff(diff, replacer=' ', spaces_count=4, depth=1):
+def format_stylish(diff, replacer=' ', spaces_count=4, depth=1):
     indent = replacer * (spaces_count * depth)
     sign_indent = replacer * (spaces_count * depth - 2)
     lines = []
     for key, value in diff.items():
         status = value['status']
         if status == 'nested':
-            children = stringify_diff(
+            children = format_stylish(
                 value['children'],
                 replacer,
                 spaces_count,

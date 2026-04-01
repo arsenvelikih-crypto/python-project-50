@@ -1,10 +1,5 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/arsenvelikih-crypto/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/arsenvelikih-crypto/python-project-50/actions)
-
-
-
-
-
 # SonarCube
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=arsenvelikih-crypto_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=arsenvelikih-crypto_python-project-50)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=arsenvelikih-crypto_python-project-50&metric=bugs)](https://sonarcloud.io/summary/new_code?id=arsenvelikih-crypto_python-project-50)
@@ -19,8 +14,55 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=arsenvelikih-crypto_python-project-50&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=arsenvelikih-crypto_python-project-50)
 
 
+
+## Description
+	Проект "Вычислитель отличий", сделанный в рамках обучения в онлайн школе
+    программирования HEXLET. 
+        
+    Цель проекта - создать CLI приложение, которое будет 
+    сравнивать два файла и показывать отличия между ними. 
+    
+    Поддерживаемые форматы файлов: JSON, YAML.
+
+    Вывод отличий может быть представлен в трех форматах: 
+        
+        "stylish"
+        "plain"
+        "json".
+
+
+
+
+
+
+    
+    
+## Installation guide
+
+## install:
+	uv sync
+
+## gendiff:
+	uv run gendiff
+
+## package-install:
+	uv tool install dist/*.whl
+
+## lint:
+	uv run ruff check
+
+## build:
+	uv build
+
+## test:
+	uv run pytest
+
+
+
+
 # Demonstration
 [![asciicast](https://asciinema.org/a/BibrgsrD6FNOqaL4.svg)](https://asciinema.org/a/BibrgsrD6FNOqaL4)
 [![asciicast](https://asciinema.org/a/DsDmAcxMYpo2ktNq.svg)](https://asciinema.org/a/DsDmAcxMYpo2ktNq)
 [![asciicast](https://asciinema.org/a/1cEOP3d6NZvQgbIA.svg)](https://asciinema.org/a/1cEOP3d6NZvQgbIA)
 [![asciicast](https://asciinema.org/a/xq1XUnlrVhgLaEUf.svg)](https://asciinema.org/a/xq1XUnlrVhgLaEUf)
+[![asciicast](https://asciinema.org/a/bmW1LARilbiCgnRv.svg)](https://asciinema.org/a/bmW1LARilbiCgnRv) 

@@ -12,14 +12,14 @@ def make_plain_value(value):
 
 
 # форматирование вывода в виде плоского текста
-def plain_format(diff, path=''):
+def format_plain(diff, path=''):
     lines = []
 
     for k, v in diff.items():
         status = v['status']
         curent_path = f"{path}{k}"
         if status == 'nested':
-            children = plain_format(v['children'], f"{curent_path}.")
+            children = format_plain(v['children'], f"{curent_path}.")
             lines.append(children)
 
         elif status == 'added':

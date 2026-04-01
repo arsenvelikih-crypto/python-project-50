@@ -1,6 +1,7 @@
 from gendiff.scripts.build_diff import build
-from gendiff.scripts.format.plain import plain_format
-from gendiff.scripts.format.stylish import stringify_diff
+from gendiff.scripts.format.json import format_json
+from gendiff.scripts.format.plain import format_plain
+from gendiff.scripts.format.stylish import format_stylish
 from gendiff.scripts.gendiff import (
     formaters,
     generate_diff,
@@ -16,6 +17,7 @@ __all__ = (
     'parse',
     'build',
     'formaters',
-    'plain_format',
-    'stringify_diff',
+    'format_plain',
+    'format_stylish',
+    'format_json'
 )
