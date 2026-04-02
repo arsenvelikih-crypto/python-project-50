@@ -2,9 +2,9 @@ import argparse
 
 from gendiff.scripts import parsing_files
 from gendiff.scripts.build_diff import build
-from gendiff.scripts.format.json import format_json
-from gendiff.scripts.format.plain import format_plain
-from gendiff.scripts.format.stylish import format_stylish
+from gendiff.formatters.json import format_json
+from gendiff.formatters.plain import format_plain
+from gendiff.formatters.stylish import format_stylish
 
 # словарь с форматами вывода
 formaters = {
